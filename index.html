@@ -3,36 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Courbaron - Portfolio</title>
-    <style>
-        /* Supprime les marges par défaut du navigateur et bloque les barres de défilement */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000000;
-        }
+    <title>Nathan Courbaron — Simulation Relativiste & Physique</title>
 
-        /* Force la vidéo à remplir exactement tout l'écran sans déformation */
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 9999;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- KaTeX pour le rendu LaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <video class="video-background" autoplay muted loop playsinline>
-        <source src="blackhole_dithered.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
+<!-- Fond vidéo permanent -->
+<video class="video-background" autoplay muted loop playsinline>
+    <source src="blackhole_dithered.mp4" type="video/mp4">
+</video>
 
+<!-- Voile interactif Spotlight -->
+<div class="overlay" id="overlay"></div>
+
+<!-- HUD Décoratif Relativiste -->
+<div class="relativity-hud">
+    <div class="hud-col">
+        <span class="hud-item">METRIC: \( ds^2 = -(1 - 2M/r)c^2 dt^2 + (1 - 2M/r)^{-1} dr^2 + r^2 d\Omega^2 \)</span>
+        <span class="hud-item" data-i18n="hudSolver">SOLVER: RUNGE-KUTTA 4TH ORDER &bull; GEODESIC INTEGRATOR</span>
+    </div>
+    <div class="hud-col right">
+        <span class="hud-item">\( r_{\text{ISCO}} = 6M \) &nbsp;|&nbsp; \( r_{\text{ph}} = 3M \)</span>
+        <span class="hud-item" data-i18n="hudObserver">OBSERVER: ASYMPTOTIC REGION (\( r \to \infty \))</span>
+    </div>
+</div>
+
+<!-- Navigation SPA & Sélecteur de langue -->
+<header class="nav-wrapper">
+    <nav id="navbar">
+        <button class="nav-btn active" data-target="home" data-i18n="navHome">Accueil</button>
+        <button class="nav-btn" data-target="projects" data-i18n="navProjects">Projets</button>
+        <button class="nav-btn" data-target="about" data-i18n="navAbout">À propos & CV</button>
+        <button class="nav-btn" data-target="contact" data-i18n="navContact">Contact</button>
+
+        <div class="lang-divider"></div>
+        <button class="lang-switch-btn" id="langSwitch" title="Switch Language">
+            <span class="lang-opt active" data-lang="fr">FR</span>
+            <span class="lang-sep">/</span>
+            <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+    </nav>
+</header>
+
+<main>
+    <!-- ==================== ACCUEIL ==================== -->
+    <section class="view-section active" id="home">
+        <div class="hero">
+            <div class="tensor-badge">
+                <span class="tensor-latex">\( G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu} \)</span>
+            </div>
+            <h1>Nathan Courbaron</h1>
+            <p class="hero-desc" data-i18n="heroDesc">
+                Étudiant en physique générale & calcul scientifique. Conception de simulations relativistes, intégration numérique de géodésiques et algorithmes graphiques C++ haute performance.
+            </p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" data-navigate="projects" data-i18n="heroBtnProjects">Explorer les simulations →</button>
+                <button class="btn btn-glass" data-navigate="about" data-i18n="heroBtnCv">Consulter le CV</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJETS ==================== -->
+    <section class="view-section" id="projects">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="projectsTitle">Simulations & Travaux Numériques</h2>
+            <p class="section-desc" data-i18n="projectsDesc">Calcul scientifique, relativité générale et rendu graphique haute performance en C++.</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- 1. blackhole_tracer_3d (Simulation de fond) -->
+            <a href="https://github.com/NathanCor/blackhole_tracer_3d" target="_blank" rel="noopener noreferrer" class="project-card featured" data-tilt>
+                <div class="card-content">
+                    <div class="project-header">
+                        <h3 data-i18n="p1Title">Rendu Relativiste & Orbite Caméra 3D</h3>
+                        <div class="header-right">
+                            <span class="badge-accent" data-i18n="badgeBackground">Simulation de fond</span>
+                            <svg class="external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </div>
+                    </div>
+                    <p class="project-desc" data-i18n="p1Desc">
+                        Moteur de rendu en C++20 visualisant un trou noir avec son disque d'accrétion sous une trajectoire orbitale à 360°. Conversion des images avec un rendu dithered deux tons.
+                    </p>
+                </div>
+                <div class="tags">
+                    <span class="tag">C++20</span>
+                    <span class="tag">Orbite 360°</span>
+                    <span class="tag">Ordered Dithering</span>
+                    <span class="tag">Ray Tracer</span>
+                </div>
+            </a>
+
+            <!-- 2. blackhole_tracer -->
+            <a href="https://github.com/NathanCor/blackhole_tracer" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
+                <div class="card-content">
+                    <div class="project-header">
+                        <h3 data-i18n="p2Title">Tracé de Rayons en Espace-Temps Courbe</h3>
+                        <svg class="external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                    <p class="project-desc" data-i18n="p2Desc">
+                        Intégration numérique RK4 des géodésiques nulles \( \frac{d^2 x^\mu}{d\lambda^2} + \Gamma^\mu_{\alpha\beta} \frac{dx^\alpha}{d\lambda} \frac{dx^\beta}{d\lambda} = 0 \). Prise en compte du décalage Doppler relativiste, du redshift gravitationnel et tramage Floyd-Steinberg.
+                    </p>
+                </div>
+                <div class="tags">
+                    <span class="tag">C++20</span>
+                    <span class="tag">Relativité Générale</span>
+                    <span class="tag">RK4</span>
+                    <span class="tag">Floyd-Steinberg</span>
+                </div>
+            </a>
+
+            <!-- 3. schwarzschild_effective_potential -->
+            <a href="https://github.com/NathanCor/schwarzschild_effective_potential" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
+                <div class="card-content">
+                    <div class="project-header">
+                        <h3 data-i18n="p3Title">Trajectoires & Potentiel Effectif</h3>
+                        <svg class="external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                    <p class="project-desc" data-i18n="p3Desc">
+                        Simulateur de trajectoires de particules massives et de photons autour d'un trou noir statique. Analyse analytique et tracé numérique des puits de potentiel effectif \( V_{\text{eff}}(r) \).
+                    </p>
+                </div>
+                <div class="tags">
+                    <span class="tag">C++</span>
+                    <span class="tag">Métrique de Schwarzschild</span>
+                    <span class="tag">Mécanique Analytique</span>
+                </div>
+            </a>
+
+            <!-- 4. rk4_integrator -->
+            <a href="https://github.com/NathanCor/rk4_integrator" target="_blank" rel="noopener noreferrer" class="project-card featured" data-tilt>
+                <div class="card-content">
+                    <div class="project-header">
+                        <h3 data-i18n="p4Title">Solveur Numérique Runge-Kutta 4</h3>
+                        <svg class="external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                    <p class="project-desc" data-i18n="p4Desc">
+                        Bibliothèque universelle *header-only* pour l'intégration d'équations différentielles ordinaires par la méthode RK4. Architecture légère conçue pour être intégrée directement dans divers moteurs physiques.
+                    </p>
+                </div>
+                <div class="tags">
+                    <span class="tag">C++11</span>
+                    <span class="tag">Header-only</span>
+                    <span class="tag">Solveur RK4</span>
+                    <span class="tag">Calcul Scientifique</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== À PROPOS & CV ==================== -->
+    <section class="view-section" id="about">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="aboutTitle">Parcours & Curriculum Vitae</h2>
+            <p class="section-desc" data-i18n="aboutDesc">Formation académique, compétences théoriques et lecteur PDF intégré.</p>
+        </div>
+
+        <div class="about-grid">
+            <article class="about-card">
+                <p data-i18n="aboutP1">
+                    Actuellement en <strong>Licence de Physique générale</strong>, mes projets s'orientent vers l'application du calcul scientifique à l'astrophysique relativiste et à la physique théorique.
+                </p>
+                <p data-i18n="aboutP2">
+                    Mon approche combine rigueur de formalisation physique (mécanique analytique, calcul tensoriel, métrique de Schwarzschild) et implémentation algorithmique optimisée en <strong>C++ moderne</strong>.
+                </p>
+            </article>
+
+            <div class="cv-container">
+                <div class="cv-toolbar">
+                    <div class="cv-info">
+                        <span class="pulse-dot"></span>
+                        <span data-i18n="cvViewerTitle">Curriculum Vitae (Format PDF)</span>
+                    </div>
+                    <a href="cv.pdf" download class="btn btn-primary btn-sm">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span data-i18n="cvDownloadBtn">Télécharger le PDF</span>
+                    </a>
+                </div>
+                <iframe class="cv-frame" src="cv.pdf" title="CV Nathan Courbaron"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="view-section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="contactTitle">Contact & Réseaux</h2>
+            <p class="section-desc" data-i18n="contactDesc">Disponible pour des opportunités de stage d'initiation à la recherche et projets de modélisation numérique.</p>
+        </div>
+
+        <div class="contact-grid">
+            <a href="mailto:nathan.courbaron@etu.u-pec.fr" class="contact-card">
+                <div class="contact-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="contact-details">
+                    <h4>Email</h4>
+                    <span>nathan.courbaron@etu.u-pec.fr</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/NathanCor" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <div class="contact-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </div>
+                <div class="contact-details">
+                    <h4>GitHub</h4>
+                    <span>github.com/NathanCor</span>
+                </div>
+            </a>
+
+            <a href="https://linkedin.com/in/nathan-courbaron/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <div class="contact-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </div>
+                <div class="contact-details">
+                    <h4>LinkedIn</h4>
+                    <span>linkedin.com/in/nathan-courbaron</span>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+
+<script src="app.js"></script>
 </body>
 </html>
