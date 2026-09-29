@@ -749,5 +749,14 @@ h1 {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 15; /* Devant la vidéo et l'overlay, derrière la navbar */
+    z-index: 5; /* Devant la vidéo (0) et l'overlay (1), DERRIÈRE le contenu (main = 10), le HUD et la navbar */
+}
+/* Curseur : couche tout au-dessus (créée par gravitational_lens.js) */
+#lensCursorCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2147483647;
 }

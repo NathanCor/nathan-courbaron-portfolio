@@ -35,7 +35,7 @@
         <button class="nav-btn" data-target="about" data-i18n="navAbout">À propos & CV</button>
         <button class="nav-btn" data-target="contact" data-i18n="navContact">Contact</button>
         <div class="lang-divider"></div>
-        <button class="lang-switch-btn" id="langSwitch" aria-label="Changer de langue">
+        <button class="lang-switch-btn" id="langSwitch" data-i18n-aria="langAria" aria-label="Changer de langue">
             <span class="lang-opt active" data-lang="fr">FR</span>
             <span class="lang-sep">/</span>
             <span class="lang-opt" data-lang="en">EN</span>
@@ -49,7 +49,7 @@
     <!-- SECTION 1 : ACCUEIL -->
     <section id="home" class="view-section active">
         <div class="hero">
-            <div class="tensor-badge" id="tensorEgg" title="Cliquez pour perturber la métrique" style="cursor: pointer;">
+            <div class="tensor-badge" id="tensorEgg" data-i18n-title="tensorTitle" title="Cliquez pour perturber la métrique" style="cursor: pointer;">
                 <span class="tensor-latex">\( G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu} \)</span>
             </div>
 
@@ -75,7 +75,7 @@
 
         <div class="projects-grid">
             <!-- Projet 1 -->
-            <a href="https://github.com/NathanCourbaron/blackhole_tracer_3d" target="_blank" rel="noopener noreferrer" class="project-card featured" data-tilt>
+            <a href="https://github.com/NathanCor/blackhole_tracer_3d" target="_blank" rel="noopener noreferrer" class="project-card featured" data-tilt>
                 <div class="project-header">
                     <h3 data-i18n="p1Title">Rendu Relativiste & Orbite Caméra 3D</h3>
                     <div class="header-right">
@@ -95,7 +95,7 @@
             </a>
 
             <!-- Projet 2 -->
-            <a href="https://github.com/NathanCourbaron/blackhole_tracer" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
+            <a href="https://github.com/NathanCor/blackhole_tracer" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
                 <div class="project-header">
                     <h3 data-i18n="p2Title">Tracé de Rayons en Espace-Temps Courbe</h3>
                     <span class="external-icon">&nearr;</span>
@@ -111,7 +111,7 @@
             </a>
 
             <!-- Projet 3 -->
-            <a href="https://github.com/NathanCourbaron/schwarzschild_effective_potential" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
+            <a href="https://github.com/NathanCor/schwarzschild_effective_potential" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
                 <div class="project-header">
                     <h3 data-i18n="p3Title">Trajectoires & Potentiel Effectif</h3>
                     <span class="external-icon">&nearr;</span>
@@ -127,7 +127,7 @@
             </a>
 
             <!-- Projet 4 -->
-            <a href="https://github.com/NathanCourbaron/rk4_integrator" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
+            <a href="https://github.com/NathanCor/rk4_integrator" target="_blank" rel="noopener noreferrer" class="project-card" data-tilt>
                 <div class="project-header">
                     <h3 data-i18n="p4Title">Solveur Numérique Runge-Kutta 4</h3>
                     <span class="external-icon">&nearr;</span>
@@ -159,6 +159,9 @@
                 <p data-i18n="aboutP2">
                     Mon approche combine rigueur de formalisation physique (mécanique analytique, calcul tensoriel, métrique de Schwarzschild) et implémentation algorithmique optimisée en <strong>C++ moderne</strong>.
                 </p>
+                <p data-i18n="aboutBooks">
+                    La relativité générale est pour moi un apprentissage <strong>autonome</strong>, mené à partir de <em>A First Course in General Relativity</em> (B. Schutz) et de <em>Relativité générale pour débutants</em> (M. Le Bellac), complétés par <em>An Introduction to Modern Astrophysics</em> (B. W. Carroll &amp; D. A. Ostlie) pour l'astrophysique. Mes projets en sont la mise en pratique numérique.
+                </p>
             </div>
 
             <div class="cv-container">
@@ -169,7 +172,7 @@
                     </div>
                     <a href="cv.pdf" download="Nathan_Courbaron_CV.pdf" class="btn btn-sm btn-primary" data-i18n="cvDownloadBtn">Télécharger le PDF</a>
                 </div>
-                <iframe src="cv.pdf" class="cv-frame" title="Curriculum Vitae de Nathan Courbaron"></iframe>
+                <iframe src="cv.pdf" class="cv-frame" data-i18n-title="cvFrameTitle" title="Curriculum Vitae de Nathan Courbaron"></iframe>
             </div>
         </div>
     </section>
@@ -182,19 +185,19 @@
         </div>
 
         <div class="contact-grid">
-            <a href="mailto:contact@nathancourbaron.fr" class="contact-card">
+            <a href="mailto:nathan.courbaron@etu.u-pec.fr" class="contact-card">
                 <div class="contact-icon">&#9993;</div>
                 <div class="contact-details">
                     <h4>Email</h4>
-                    <span>contact@nathancourbaron.fr</span>
+                    <span>nathan.courbaron@etu.u-pec.fr</span>
                 </div>
             </a>
 
-            <a href="https://github.com/NathanCourbaron" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <a href="https://github.com/NathanCor" target="_blank" rel="noopener noreferrer" class="contact-card">
                 <div class="contact-icon">&#128187;</div>
                 <div class="contact-details">
                     <h4>GitHub</h4>
-                    <span>github.com/NathanCourbaron</span>
+                    <span>github.com/NathanCor</span>
                 </div>
             </a>
 
@@ -212,23 +215,23 @@
     <section id="singularity" class="view-section">
         <div class="singularity-container">
             <div class="singularity-header">
-                <span class="singularity-tag">COSMIC CENSORSHIP VIOLATION</span>
-                <h2>Intérieur de l'Horizon (\( r < 2M \))</h2>
-                <p class="singularity-coords">Coordonnées de Kruskal-Szekeres: \( U \cdot V = 1 \)</p>
+                <span class="singularity-tag" data-i18n="singTag">COSMIC CENSORSHIP VIOLATION</span>
+                <h2 data-i18n="singTitle">Intérieur de l'Horizon (\( r &lt; 2M \))</h2>
+                <p class="singularity-coords" data-i18n="singCoords">Coordonnées de Kruskal-Szekeres : la singularité \( r = 0 \) correspond à \( U \cdot V = 1 \)</p>
             </div>
 
             <div class="singularity-content">
                 <div class="penrose-card">
-                    <h3>Métrique Inversée</h3>
-                    <p>Dans cette région, la coordonnée radiale \( r \) devient de genre temps et \( t \) de genre espace : la singularité n'est plus un lieu, mais un instant inéluctable.</p>
+                    <h3 data-i18n="singCard1Title">Métrique Inversée</h3>
+                    <p data-i18n="singCard1Text">Dans cette région, la coordonnée radiale \( r \) devient de genre temps et \( t \) de genre espace : la singularité n'est plus un lieu, mais un instant inéluctable.</p>
                     <div class="equation-box">
-                        \( g_{rr} = \left(1 - \frac{2M}{r}\right)^{-1} < 0, \quad g_{tt} = -\left(1 - \frac{2M}{r}\right) > 0 \)
+                        \( g_{rr} = \left(1 - \frac{2M}{r}\right)^{-1} &lt; 0, \quad g_{tt} = -\left(1 - \frac{2M}{r}\right) &gt; 0 \)
                     </div>
                 </div>
 
                 <div class="penrose-card">
-                    <h3>Invariants de Courbure</h3>
-                    <p>Le scalaire de Kretschmann diverge irrémédiablement vers l'infini au point central :</p>
+                    <h3 data-i18n="singCard2Title">Invariants de Courbure</h3>
+                    <p data-i18n="singCard2Text">Le scalaire de Kretschmann diverge irrémédiablement vers l'infini au point central :</p>
                     <div class="equation-box">
                         \( K = R^{\alpha\beta\gamma\delta} R_{\alpha\beta\gamma\delta} = \frac{48 G^2 M^2}{c^4 r^6} \xrightarrow[r \to 0]{} \infty \)
                     </div>
@@ -236,7 +239,7 @@
             </div>
 
             <div class="singularity-actions">
-                <button class="btn btn-primary" data-navigate="home">&larr; Traverser le pont d'Einstein-Rosen (Retour)</button>
+                <button class="btn btn-primary" data-navigate="home" data-i18n="singBack">&larr; Traverser le pont d'Einstein-Rosen (Retour)</button>
             </div>
         </div>
     </section>
@@ -246,23 +249,23 @@
 <!-- HUD Relativiste avec Télémétrie en direct et Clocks -->
 <div class="relativity-hud">
     <div class="hud-col">
-        <span class="hud-item">METRIC: \( ds^2 = -(1 - 2M/r)c^2 dt^2 + (1 - 2M/r)^{-1} dr^2 + r^2 d\Omega^2 \)</span>
+        <span class="hud-item"><span data-i18n="hudMetric">METRIC</span>: \( ds^2 = -(1 - 2M/r)c^2 dt^2 + (1 - 2M/r)^{-1} dr^2 + r^2 d\Omega^2 \)</span>
         <div class="hud-telemetry">
-            <span>LOCAL COORD: \( r \approx \)<span id="telemetry-r">--</span>\( M \)</span>
+            <span><span data-i18n="hudCoord">LOCAL COORD</span>: \( r \approx \)<span id="telemetry-r">--</span>\( M \)</span>
             <span class="hud-sep">&bull;</span>
-            <span>LAPSE: \( \alpha(r) \approx \)<span id="telemetry-alpha">--</span></span>
+            <span><span data-i18n="hudLapse">LAPSE</span>: \( \alpha(r) \approx \)<span id="telemetry-alpha">--</span></span>
             <span class="hud-sep">&bull;</span>
-            <span>REDSHIFT: \( z \approx \)<span id="telemetry-z">--</span></span>
+            <span><span data-i18n="hudRedshift">REDSHIFT</span>: \( z \approx \)<span id="telemetry-z">--</span></span>
         </div>
     </div>
 
     <div class="hud-col right">
         <div class="hud-clocks">
-            <span title="Temps coordonné (observateur à l'infini)">\( t_\infty \): <strong id="clock-coord">00:00.00</strong></span>
+            <span data-i18n-title="clockCoordTitle" title="Temps coordonné (observateur à l'infini)">\( t_\infty \): <strong id="clock-coord">00:00.00</strong></span>
             <span class="hud-sep">|</span>
-            <span title="Temps propre sous le curseur">\( \tau_{\text{probe}} \): <strong id="clock-proper">00:00.00</strong></span>
+            <span data-i18n-title="clockProperTitle" title="Temps propre sous le curseur">\( \tau_{\text{probe}} \): <strong id="clock-proper">00:00.00</strong></span>
         </div>
-        <span class="hud-item easter-egg-trigger" id="calabiEgg" title="Compactification spatiale">
+        <span class="hud-item easter-egg-trigger" id="calabiEgg" data-i18n-title="calabiTitle" title="Compactification spatiale">
                 DIM: \( D = 3+1 \) <span class="hidden-dims">(+6)</span>
             </span>
     </div>
